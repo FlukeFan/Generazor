@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Microsoft.AspNetCore.Razor.Hosting;
 
 namespace Generazor
 {
@@ -10,6 +11,8 @@ namespace Generazor
             var assemblyPath = typeof(TModel).Assembly.Location;
             var viewAssemblyPath = assemblyPath.Replace(".dll", ".Views.dll");
             var viewAssembly = Assembly.LoadFile(viewAssemblyPath);
+
+            var rcil = new RazorCompiledItemLoader();
 
             return "empty";
         }
