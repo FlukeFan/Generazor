@@ -1,0 +1,17 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <Import Project="Build\common.build.proj" />
+
+  <ItemGroup>
+    <ProjectsToBuild Include="Generazor\Generazor.csproj" />
+  </ItemGroup>
+  
+  <Target Name="BeforeBuild" BeforeTargets="Build">
+    <MSBuild Projects="Build\BuildUtil\Build.BuildUtil.csproj" Targets="Build" Properties="Configuration=Debug" />
+  </Target>
+
+  <Target Name="BeforeRestore" BeforeTargets="Restore">
+    <MSBuild Projects="Build\BuildUtil\Build.BuildUtil.csproj" Targets="Restore" />
+  </Target>
+
+</Project>
