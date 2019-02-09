@@ -4,6 +4,7 @@
 
   <ItemGroup>
     <ProjectsToBuild Include="Generazor\Generazor.csproj" />
+    <ProjectsToBuild Include="Samples\build.proj" />
   </ItemGroup>
   
   <Target Name="BeforeBuild" BeforeTargets="Build">
