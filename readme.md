@@ -4,7 +4,7 @@
 Generazor
 =========
 
-Template based code generation using the Razor SDK.
+Template based code generation for .NET Core using the Razor SDK.
 
 
 Building
