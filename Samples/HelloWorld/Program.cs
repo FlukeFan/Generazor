@@ -6,9 +6,15 @@ namespace HelloWorld
 {
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
+        {
+            MainAsync(args).GetAwaiter().GetResult();
+        }
+
+        static async Task MainAsync(string[] args)
         {
             var model = new HelloWorldModel { Message = "Hello from generated template!" };
+
             var gen = new Generator();
             var output = await gen.GenerateStringAsync("/HelloWorld.cshtml", model);
 
