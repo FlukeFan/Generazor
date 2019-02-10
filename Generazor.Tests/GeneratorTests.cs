@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using FluentAssertions;
+using Generazor.Tests.Templates;
 using NUnit.Framework;
 
 namespace Generazor.Tests
@@ -25,6 +26,16 @@ namespace Generazor.Tests
             var output = await new Generator().GenerateStringAsync(model);
 
             output.Should().Be("Value1=value_1");
+        }
+
+        [Test]
+        public async Task GenerateToString_SubFolder()
+        {
+            var model = new Example2 { Value = "value" };
+
+            var output = await new Generator().GenerateStringAsync(model);
+
+            output.Should().Be("Value=value");
         }
     }
 }

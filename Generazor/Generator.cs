@@ -11,14 +11,7 @@ namespace Generazor
     {
         public async Task<string> GenerateStringAsync<TModel>(TModel model)
         {
-            var modelType = typeof(TModel);
-            var modelName = modelType.Name;
-
-            if (modelName.EndsWith("Model"))
-                modelName = modelName.Substring(0, modelName.Length - "Model".Length);
-
-            var view = $"/{modelName}.cshtml";
-
+            var view = ViewFor(typeof(TModel));
             return await GenerateStringAsync(view, model);
         }
 
@@ -46,6 +39,23 @@ namespace Generazor
 
                 return stringWriter.ToString();
             }
+        }
+
+        public string ViewFor(Type modelType)
+        {
+            var modelName = modelType.FullName;
+
+            var assemblyName = modelType.Assembly.GetName().Name;
+
+            if (modelName.StartsWith(assemblyName))
+                modelName = modelName.Substring(assemblyName.Length + 1);
+
+            if (modelName.EndsWith("Model"))
+                modelName = modelName.Substring(0, modelName.Length - "Model".Length);
+
+            var view = $"/{modelName.Replace(".", "/")}.cshtml";
+
+            return view;
         }
     }
 }
