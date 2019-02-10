@@ -9,9 +9,21 @@ namespace Generazor
 {
     public class Generator
     {
+        public async Task<string> GenerateStringAsync<TModel>(TModel model)
+        {
+            var modelType = typeof(TModel);
+            var modelName = modelType.Name;
+
+            if (modelName.EndsWith("Model"))
+                modelName = modelName.Substring(0, modelName.Length - "Model".Length);
+
+            var view = $"/{modelName}.cshtml";
+
+            return await GenerateStringAsync(view, model);
+        }
+
         public async Task<string> GenerateStringAsync<TModel>(string view, TModel model)
         {
-
             var assemblyPath = typeof(TModel).Assembly.Location;
             var viewAssemblyPath = assemblyPath.Replace(".dll", ".Views.dll");
             var viewAssembly = Assembly.LoadFile(viewAssemblyPath);

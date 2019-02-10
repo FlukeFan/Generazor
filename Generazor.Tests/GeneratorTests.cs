@@ -16,5 +16,15 @@ namespace Generazor.Tests
 
             output.Should().Be("Value1=value_1");
         }
+
+        [Test]
+        public async Task GenerateToString_ViewConvention()
+        {
+            var model = new ExampleModel { Value1 = "value_1" };
+
+            var output = await new Generator().GenerateStringAsync(model);
+
+            output.Should().Be("Value1=value_1");
+        }
     }
 }
