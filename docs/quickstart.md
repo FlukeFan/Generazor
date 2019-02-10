@@ -8,7 +8,7 @@ Execute the following:
     dotnet add package Generazor
     dotnet add package Microsoft.AspNetCore.Mvc
 
-Open `HelloWorld.csproj`, and change:
+Open `HelloWorld.csproj` and change:
 
     <Project Sdk="Microsoft.NET.Sdk">
 
@@ -16,7 +16,7 @@ to
 
     <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-First add a very simple model class `HelloWorldModel.cs`:
+First add a model class `HelloWorldModel.cs`:
 
     namespace HelloWorld
     {
@@ -26,14 +26,14 @@ First add a very simple model class `HelloWorldModel.cs`:
         }
     }
 
-And add a very simple view `HelloWorld.cshtml`:
+Then add a corresponding view `HelloWorld.cshtml`:
 
     @namespace HelloWorld
     @inherits Generazor.GenerazorPage<HelloWorldModel>
     @model HelloWorldModel
     @Model.Message
 
-Because the package Microsoft.AspNetCore.Mvc was added, you get intellisense on the .cshtml files, and you get an assembly `HelloWorld.View.dll` generated.
+Because the package `Microsoft.AspNetCore.Mvc` was added, you get intellisense on the `.cshtml` files, and you get an assembly `HelloWorld.View.dll` generated.
 
 Now update `Program.cs`:
 
@@ -62,11 +62,11 @@ Now update `Program.cs`:
         }
     }
 
-Now you can do:
+Now when you run the program:
 
     dotnet run
 
-... and you should see the output:
+... you should see the output:
 
     Hello from generated template!
 
