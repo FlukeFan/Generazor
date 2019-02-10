@@ -16,4 +16,15 @@
     <MSBuild Projects="Build\BuildUtil\Build.BuildUtil.csproj" Targets="Restore" />
   </Target>
 
+  <Target Name="SetApiKey">
+    <Exec Command="dotnet nuget setApiKey $(apiKey) --source nuget.org" />
+  </Target>
+
+  <Target Name="Push">
+    <Exec Command="dotnet msbuild build.proj /p:RunTests=true /p:Configuration=Release" />
+    <Exec Command="dotnet nuget push Generazor\bin\Release\Generazor.$(Version).nupkg --source nuget.org" />
+    <Exec Command="dotnet clean build.proj" />
+    <Message Importance="high" Text="Version $(Version) pushed to nuget.org" />
+  </Target>
+
 </Project>

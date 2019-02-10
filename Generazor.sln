@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_root", "_root", "{5D7A1474
 		build.proj = build.proj
 		CommandPrompt.bat = CommandPrompt.bat
 		global.json = global.json
+		icon.png = icon.png
 		LICENSE.txt = LICENSE.txt
 		readme.md = readme.md
 	EndProjectSection
@@ -31,7 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{C155
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "Samples\HelloWorld\HelloWorld.csproj", "{E4729AE1-ABA2-4040-9F38-1B4A84757731}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generazor.Tests", "Generazor.Tests\Generazor.Tests.csproj", "{935543BB-9498-4989-8639-8A03EFFD52AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generazor.Tests", "Generazor.Tests\Generazor.Tests.csproj", "{935543BB-9498-4989-8639-8A03EFFD52AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

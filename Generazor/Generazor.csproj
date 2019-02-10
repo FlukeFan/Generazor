@@ -13,4 +13,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.2.0" />
   </ItemGroup>
 
+  <Target Name="Package" AfterTargets="CoreBuild" BeforeTargets="AfterBuild" Condition="'$(AfterGeneratedContent)' != 'true'">
+    <MsBuild Projects="$(MSBuildThisFile)" Targets="Pack" Properties="AfterGeneratedContent=true" />
+  </Target>
+
 </Project>

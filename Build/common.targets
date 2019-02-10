@@ -4,6 +4,12 @@
   <PropertyGroup>
 
     <Version>0.0.1</Version>
+    <Description>Template based code generation for .NET Core using the Razor SDK.</Description>
+    <PackageTags>.NET Core Template Code Generation T4</PackageTags>
+    <Authors>Richard Brown</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/FlukeFan/Generazor</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/FlukeFan/Generazor/master/icon.png</PackageIconUrl>
 
     <PreserveCompilationContext Condition="$(IsTestProject)=='true'">true</PreserveCompilationContext>
     <CoverageTarget Condition="'$(CoverageTarget)'==''">70</CoverageTarget>
