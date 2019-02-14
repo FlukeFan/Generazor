@@ -1,4 +1,4 @@
-﻿namespace SQLiteDao.ConsoleApp
+﻿namespace ConsoleApp
 {
     public class Artist
     {

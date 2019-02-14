@@ -3,9 +3,9 @@ using System.Data.SQLite;
 using System.Threading.Tasks;
 using Generazor;
 
-namespace SQLiteDao.DaoGenerator
+namespace DALGenerator
 {
-    class DaoGenerator
+    class DALGenerator
     {
         static async Task Main(string[] args)
         {
@@ -19,6 +19,8 @@ namespace SQLiteDao.DaoGenerator
             {
                 cn.Open();
 
+                var tables = cn.GetSchema("Tables");
+                var columns = cn.GetSchema("Columns");
             }
 
             await new Generator().GenerateFilesAsync(filesToGenerate);

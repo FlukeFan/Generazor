@@ -25,7 +25,7 @@
 
   <Target Name="BuildSamples" BeforeTargets="Build">
     <MSBuild Targets="Build" Projects="..\Samples\HelloWorld\HelloWorld.csproj" />
-    <MSBuild Targets="Build" Projects="..\Samples\SQLiteDao\ConsoleApp\ConsoleApp.csproj" />
+    <MSBuild Targets="Build" Projects="..\Samples\SQLiteDAL\ConsoleApp\ConsoleApp.csproj" />
   </Target>
 
 </Project>

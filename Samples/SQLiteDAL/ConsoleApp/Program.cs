@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SQLiteDao.ConsoleApp
+namespace ConsoleApp
 {
     class Program
     {
@@ -19,7 +19,7 @@ namespace SQLiteDao.ConsoleApp
             var currentDirectory = Environment.CurrentDirectory;
 
             if (File.Exists("Generazor.sln"))
-                currentDirectory = Path.Combine(currentDirectory, "Samples/SQLiteDao/ConsoleApp");
+                currentDirectory = Path.Combine(currentDirectory, "Samples/SQLiteDAL/ConsoleApp");
 
             var dbPath = Path.Combine(currentDirectory, "../chinook.db");
 

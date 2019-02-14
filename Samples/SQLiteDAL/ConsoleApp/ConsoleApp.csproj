@@ -13,9 +13,9 @@
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.109.2" />
   </ItemGroup>
 
-  <Target Name="GenerateDao" BeforeTargets="BeforeBuild">
-    <MSBuild Projects="../DaoGenerator/DaoGenerator.csproj" Targets="Build" />
-    <Exec Command="dotnet ../DaoGenerator/bin/$(Configuration)/netcoreapp2.2\DaoGenerator.dll $(MSBuildThisFileDirectory)../chinook.db $(MSBuildThisFileDirectory)Generated SQLiteDao.ConsoleApp" />
+  <Target Name="GenerateDAL" BeforeTargets="BeforeBuild">
+    <MSBuild Projects="../DALGenerator/DALGenerator.csproj" Targets="Build" />
+    <Exec Command="dotnet ../DALGenerator/bin/$(Configuration)/netcoreapp2.2\DALGenerator.dll $(MSBuildThisFileDirectory)../chinook.db $(MSBuildThisFileDirectory)Generated ConsoleApp" />
   </Target>
 
 </Project>

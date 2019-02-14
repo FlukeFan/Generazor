@@ -34,14 +34,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "Samples\Hello
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generazor.Tests", "Generazor.Tests\Generazor.Tests.csproj", "{935543BB-9498-4989-8639-8A03EFFD52AD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLiteDao", "SQLiteDao", "{13730FDC-6100-455B-8B89-B143B5E7C0E2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLiteDAL", "SQLiteDAL", "{13730FDC-6100-455B-8B89-B143B5E7C0E2}"
 	ProjectSection(SolutionItems) = preProject
-		Samples\SQLiteDao\chinook.db = Samples\SQLiteDao\chinook.db
+		Samples\SQLiteDAL\chinook.db = Samples\SQLiteDAL\chinook.db
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaoGenerator", "Samples\SQLiteDao\DaoGenerator\DaoGenerator.csproj", "{3C256284-56A4-4D02-AA2B-B31F445D2051}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DALGenerator", "Samples\SQLiteDAL\DALGenerator\DALGenerator.csproj", "{3C256284-56A4-4D02-AA2B-B31F445D2051}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "Samples\SQLiteDao\ConsoleApp\ConsoleApp.csproj", "{D799DED7-B8BA-493E-8B0B-E4C42216E7C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "Samples\SQLiteDAL\ConsoleApp\ConsoleApp.csproj", "{D799DED7-B8BA-493E-8B0B-E4C42216E7C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
