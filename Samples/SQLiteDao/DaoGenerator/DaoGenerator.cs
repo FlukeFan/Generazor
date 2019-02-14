@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Generazor;
 
-namespace DapperDao
+namespace SQLiteDao.DaoGenerator
 {
     public class DaoGenerator : ISetupGeneration
     {

@@ -4,7 +4,8 @@
 
   <ItemGroup>
     <ProjectsToBuild Include="HelloWorld\HelloWorld.csproj" />
-    <ProjectsToBuild Include="DapperDao\DapperDao.csproj" />
+    <ProjectsToBuild Include="SQLiteDao\DaoGenerator\DaoGenerator.csproj" />
+    <ProjectsToBuild Include="SQLiteDao\ConsoleApp\ConsoleApp.csproj" />
   </ItemGroup>
 
 </Project>

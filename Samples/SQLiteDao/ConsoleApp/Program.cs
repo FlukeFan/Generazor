@@ -19,9 +19,9 @@ namespace DapperDao
             var currentDirectory = Environment.CurrentDirectory;
 
             if (File.Exists("Generazor.sln"))
-                currentDirectory = Path.Combine(currentDirectory, "Samples/DapperDao");
+                currentDirectory = Path.Combine(currentDirectory, "Samples/SQLiteDao/ConsoleApp");
 
-            var dbPath = Path.Combine(currentDirectory, "chinook.db");
+            var dbPath = Path.Combine(currentDirectory, "../chinook.db");
 
             using (var cn = new SQLiteConnection($"Data Source={dbPath}"))
             {
