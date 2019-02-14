@@ -5,7 +5,6 @@
 
   <ItemGroup>
     <ProjectsToBuild Include="Generazor\Generazor.csproj" />
-    <ProjectsToBuild Include="Generazor.Runner\Generazor.Runner.csproj" />
     <ProjectsToBuild Include="Samples\build.proj" />
     <ProjectsToBuild Include="Generazor.Tests\Generazor.Tests.csproj" />
   </ItemGroup>

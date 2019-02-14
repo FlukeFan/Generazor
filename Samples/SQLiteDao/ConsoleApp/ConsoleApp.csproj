@@ -9,17 +9,13 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.7" />
-    <PackageReference Include="Generazor" Version="0.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.109.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Generazor\Generazor.csproj" />
-  </ItemGroup>
-
   <Target Name="GenerateDao" BeforeTargets="BeforeBuild">
-    <!--<Exec Command="dotnet ..\..\Generazor.Runner\bin\$(Configuration)\netcoreapp2.2\Generazor.Runner.dll $(OutDir)$(TargetFileName) $(MSBuildThisFileDirectory)chinook.db" />-->
+    <MSBuild Projects="../DaoGenerator/DaoGenerator.csproj" Targets="Build" />
+    <Exec Command="dotnet ../DaoGenerator/bin/$(Configuration)/netcoreapp2.2\DaoGenerator.dll $(MSBuildThisFileDirectory)../chinook.db" />
   </Target>
 
 </Project>

@@ -1,18 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.Data.SQLite;
+using System.Threading.Tasks;
 using Generazor;
 
 namespace SQLiteDao.DaoGenerator
 {
-    public class DaoGenerator : ISetupGeneration
+    class DaoGenerator
     {
-        public IList<FileGenerationInfo> Setup(string[] args)
+        static async Task Main(string[] args)
         {
-            var db = args[0];
+            var dbPath = args[0];
+            var filesToGenerate = new List<FileGenerationInfo>();
 
-            if (db.Length > 0)
-                throw new System.Exception($"Generating from DB: {db}");
+            using (var cn = new SQLiteConnection($"Data Source={dbPath}"))
+            {
+                cn.Open();
 
-            return new List<FileGenerationInfo>();
+            }
+
+            await new Generator().GenerateFilesAsync(filesToGenerate);
         }
     }
 }

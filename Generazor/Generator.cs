@@ -20,7 +20,7 @@ namespace Generazor
         {
             var assemblyPath = typeof(TModel).Assembly.Location;
             var viewAssemblyPath = assemblyPath.Replace(".dll", ".Views.dll");
-            var viewAssembly = Assembly.LoadFile(viewAssemblyPath);
+            var viewAssembly = Assembly.LoadFrom(viewAssemblyPath);
 
             var itemLoader = new RazorCompiledItemLoader();
             var items = itemLoader.LoadItems(viewAssembly);
