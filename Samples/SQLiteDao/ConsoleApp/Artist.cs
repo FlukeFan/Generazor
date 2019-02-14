@@ -1,4 +1,4 @@
-﻿namespace DapperDao
+﻿namespace SQLiteDao.ConsoleApp
 {
     public class Artist
     {

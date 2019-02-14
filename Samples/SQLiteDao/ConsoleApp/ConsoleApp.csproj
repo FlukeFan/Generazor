@@ -15,7 +15,7 @@
 
   <Target Name="GenerateDao" BeforeTargets="BeforeBuild">
     <MSBuild Projects="../DaoGenerator/DaoGenerator.csproj" Targets="Build" />
-    <Exec Command="dotnet ../DaoGenerator/bin/$(Configuration)/netcoreapp2.2\DaoGenerator.dll $(MSBuildThisFileDirectory)../chinook.db" />
+    <Exec Command="dotnet ../DaoGenerator/bin/$(Configuration)/netcoreapp2.2\DaoGenerator.dll $(MSBuildThisFileDirectory)../chinook.db $(MSBuildThisFileDirectory)Generated SQLiteDao.ConsoleApp" />
   </Target>
 
 </Project>

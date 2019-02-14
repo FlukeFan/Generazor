@@ -3,7 +3,7 @@ using System.Data;
 using System.Threading.Tasks;
 using Dapper;
 
-namespace DapperDao
+namespace SQLiteDao.ConsoleApp
 {
     public static class Artists
     {
