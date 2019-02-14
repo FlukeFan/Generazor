@@ -23,4 +23,9 @@
     <TestDependencies Include="../Samples/*/bin/**/*.*" />
   </ItemGroup>
 
+  <Target Name="BuildSamples" BeforeTargets="Build">
+    <MSBuild Targets="Build" Projects="..\Samples\HelloWorld\HelloWorld.csproj" />
+    <MSBuild Targets="Build" Projects="..\Samples\DapperDao\DapperDao.csproj" />
+  </Target>
+
 </Project>

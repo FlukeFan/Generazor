@@ -4,6 +4,7 @@
 
   <ItemGroup>
     <ProjectsToBuild Include="HelloWorld\HelloWorld.csproj" />
+    <ProjectsToBuild Include="DapperDao\DapperDao.csproj" />
   </ItemGroup>
 
 </Project>
