@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <Target Name="GenerateDao" BeforeTargets="BeforeBuild">
-    <!--<Exec Command="dotnet ..\..\Generazor.Console\bin\$(Configuration)\netcoreapp2.2\Generazor.Console.dll $(OutDir)$(TargetFileName) $(MSBuildThisFileDirectory)chinook.db" />-->
+    <!--<Exec Command="dotnet ..\..\Generazor.Runner\bin\$(Configuration)\netcoreapp2.2\Generazor.Runner.dll $(OutDir)$(TargetFileName) $(MSBuildThisFileDirectory)chinook.db" />-->
   </Target>
 
 </Project>

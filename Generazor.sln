@@ -34,7 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorld", "Samples\Hello
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generazor.Tests", "Generazor.Tests\Generazor.Tests.csproj", "{935543BB-9498-4989-8639-8A03EFFD52AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generazor.Console", "Generazor.Console\Generazor.Console.csproj", "{B261E8D8-36B0-4722-AE01-D94711F25FEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generazor.Runner", "Generazor.Runner\Generazor.Runner.csproj", "{B261E8D8-36B0-4722-AE01-D94711F25FEC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLiteDao", "SQLiteDao", "{13730FDC-6100-455B-8B89-B143B5E7C0E2}"
 	ProjectSection(SolutionItems) = preProject

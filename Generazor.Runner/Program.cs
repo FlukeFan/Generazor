@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Generazor.Console
+namespace Generazor.Runner
 {
     class Program
     {
