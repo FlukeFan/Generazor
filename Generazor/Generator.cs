@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -39,6 +40,11 @@ namespace Generazor
 
                 return stringWriter.ToString();
             }
+        }
+
+        public async Task GenerateFilesAsync(IList<FileGenerationInfo> fileGenerationInfos)
+        {
+            await Task.Delay(0);
         }
 
         public string ViewFor(Type modelType)

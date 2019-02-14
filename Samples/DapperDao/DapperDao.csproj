@@ -14,4 +14,12 @@
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.109.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Generazor\Generazor.csproj" />
+  </ItemGroup>
+
+  <Target Name="GenerateDao" BeforeTargets="CoreBuild">
+    <Exec Command="dotnet ..\..\Generazor.Console\bin\$(Configuration)\netcoreapp2.2\Generazor.Console.dll $(OutDir)$(TargetFileName) $(MSBuildThisFileDirectory)chinook.db" />
+  </Target>
+
 </Project>

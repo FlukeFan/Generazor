@@ -1,21 +1,13 @@
 ﻿using System.Collections.Generic;
+using Generazor;
 
 namespace DapperDao
 {
-    public interface ISetupGeneration
-    {
-        IList<GenerateInfo> Setup(string[] args);
-    }
-
-    public class GenerateInfo
-    {
-    }
-
     public class DaoGenerator : ISetupGeneration
     {
-        public IList<GenerateInfo> Setup(string[] args)
+        public IList<FileGenerationInfo> Setup(string[] args)
         {
-            throw new System.Exception("Got to here");
+            return new List<FileGenerationInfo>();
         }
     }
 }
