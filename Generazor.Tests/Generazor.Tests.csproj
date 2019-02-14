@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Generazor\Generazor.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <TestDependencies Include="../Samples/*/bin/**/*.*" />
+  </ItemGroup>
+
 </Project>
