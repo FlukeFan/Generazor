@@ -56,7 +56,7 @@ namespace Generazor
                 await fileGenerator.GenerateAsync(this);
         }
 
-        public string ViewFor(Type modelType)
+        public static string ViewFor(Type modelType)
         {
             var modelName = modelType.FullName;
 

@@ -66,6 +66,20 @@ namespace Generazor.Tests
             }
         }
 
+        [Test]
+        public async Task GenerateFiles_StreamingFile()
+        {
+            using (var setup = new SetupTestFolder())
+            {
+                await new Generator().GenerateFilesAsync(new List<FileGenerator>
+                {
+                    FileGenerator.StreamingFile(new Example2 { Value = "123" }, "test.txt"),
+                });
+
+                File.ReadAllText("test.txt").Should().Be("Value=123");
+            }
+        }
+
         public class SetupTestFolder : IDisposable
         {
             private string _previousCurrentDirectory;
