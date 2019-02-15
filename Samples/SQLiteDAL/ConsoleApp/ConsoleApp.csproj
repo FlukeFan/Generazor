@@ -1,21 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.109.2" />
   </ItemGroup>
 
   <Target Name="GenerateDAL" BeforeTargets="BeforeBuild">
     <MSBuild Projects="../DALGenerator/DALGenerator.csproj" Targets="Build" />
     <Exec Command="dotnet ../DALGenerator/bin/$(Configuration)/netcoreapp2.2\DALGenerator.dll $(MSBuildThisFileDirectory)../chinook.db $(MSBuildThisFileDirectory)Generated ConsoleApp" />
+    <ItemGroup>
+      <Compile Include="**/*.cs" />
+    </ItemGroup>
   </Target>
 
 </Project>
