@@ -80,6 +80,70 @@ namespace Generazor.Tests
             }
         }
 
+        [Test]
+        public async Task GenerateFiles_StreamingFile_OverwritesExistingContent()
+        {
+            using (var setup = new SetupTestFolder())
+            {
+                File.WriteAllText("test.txt", "previous content");
+
+                await new Generator().GenerateFilesAsync(new List<FileGenerator>
+                {
+                    FileGenerator.StreamingFile(new Example2 { Value = "234" }, "test.txt"),
+                });
+
+                File.ReadAllText("test.txt").Should().Be("Value=234");
+            }
+        }
+
+        [Test]
+        public async Task GenerateFiles_LazyFile_CreatesFile()
+        {
+            using (var setup = new SetupTestFolder())
+            {
+                await new Generator().GenerateFilesAsync(new List<FileGenerator>
+                {
+                    FileGenerator.LazyFile(new Example2 { Value = "567" }, "test.txt"),
+                });
+
+                File.ReadAllText("test.txt").Should().Be("Value=567");
+            }
+        }
+
+        [Test]
+        public async Task GenerateFiles_LazyFile_OverwritesIfContentIsDifferent()
+        {
+            using (var setup = new SetupTestFolder())
+            {
+                File.WriteAllText("test.txt", "previous content");
+
+                await new Generator().GenerateFilesAsync(new List<FileGenerator>
+                {
+                    FileGenerator.LazyFile(new Example2 { Value = "345" }, "test.txt"),
+                });
+
+                File.ReadAllText("test.txt").Should().Be("Value=345");
+            }
+        }
+
+        [Test]
+        public async Task GenerateFiles_LazyFile_LeavesFileUntouchedIfContentUnchaged()
+        {
+            using (var setup = new SetupTestFolder())
+            {
+                File.WriteAllText("test.txt", "Value=456");
+                var previousTime = File.GetLastWriteTimeUtc("test.txt");
+
+                await new Generator().GenerateFilesAsync(new List<FileGenerator>
+                {
+                    FileGenerator.LazyFile(new Example2 { Value = "456" }, "test.txt"),
+                });
+
+                File.ReadAllText("test.txt").Should().Be("Value=456");
+                File.GetLastWriteTimeUtc("test.txt").Should().Be(previousTime);
+            }
+        }
+
         public class SetupTestFolder : IDisposable
         {
             private string _previousCurrentDirectory;
