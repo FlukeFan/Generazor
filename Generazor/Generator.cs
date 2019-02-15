@@ -18,6 +18,27 @@ namespace Generazor
 
         public async Task<string> GenerateStringAsync<TModel>(string view, TModel model)
         {
+            using (var stringWriter = new StringWriter())
+            {
+                await Generate(view, model, stringWriter);
+                return stringWriter.ToString();
+            }
+        }
+
+        public async Task GenerateFileAsync<TModel>(TModel model, string file)
+        {
+            var view = ViewFor(typeof(TModel));
+            await GenerateFileAsync(view, model, file);
+        }
+
+        public async Task GenerateFileAsync<TModel>(string view, TModel model, string file)
+        {
+            using (var fileWriter = File.CreateText(file))
+                await Generate(view, model, fileWriter);
+        }
+
+        public async Task Generate<TModel>(string view, TModel model, TextWriter textWriter)
+        {
             var assemblyPath = typeof(TModel).Assembly.Location;
             var viewAssemblyPath = assemblyPath.Replace(".dll", ".Views.dll");
             var viewAssembly = Assembly.LoadFrom(viewAssemblyPath);
@@ -31,20 +52,20 @@ namespace Generazor
                 throw new Exception($"Could not find view '{view}' in assembly {viewAssembly.Location}.  Valid views:\n{string.Join("\n", items.Select(i => i.Identifier))}");
 
             var page = (GenerazorPage<TModel>)Activator.CreateInstance(item.Type);
-
-            using (var stringWriter = new StringWriter())
-            {
-                (page as IActivatePage<TModel>).Activate(stringWriter, model);
-
-                await page.ExecuteAsync();
-
-                return stringWriter.ToString();
-            }
+            (page as IActivatePage<TModel>).Activate(textWriter, model);
+            await page.ExecuteAsync();
         }
 
-        public async Task GenerateFilesAsync(IEnumerable<FileGenerationInfo> fileGenerationInfos)
+        public async Task GenerateFilesAsync<TModel>(IEnumerable<FileGenerator> fileGenerators)
         {
-            await Task.Delay(0);
+            foreach (var fileGenerator in fileGenerators)
+                await fileGenerator.GenerateAsync(this);
+        }
+
+        public async Task GenerateFilesAsync(IEnumerable<FileGenerator> fileGenerators)
+        {
+            foreach (var fileGenerator in fileGenerators)
+                await fileGenerator.GenerateAsync(this);
         }
 
         public string ViewFor(Type modelType)

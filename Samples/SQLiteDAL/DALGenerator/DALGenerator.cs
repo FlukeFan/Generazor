@@ -14,7 +14,7 @@ namespace DALGenerator
             var outputPath = args[1];
             var generatedNamespace = args[2];
 
-            var filesToGenerate = new List<FileGenerationInfo>();
+            var filesToGenerate = new List<FileGenerator>();
 
             using (var cn = new SQLiteConnection($"Data Source={dbPath}"))
             {

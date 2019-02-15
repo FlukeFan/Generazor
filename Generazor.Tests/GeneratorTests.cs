@@ -43,38 +43,64 @@ namespace Generazor.Tests
         }
 
         [Test]
+        public async Task GenerateToFile()
+        {
+            using (var setup = new SetupTestFolder())
+            {
+                var model = new Example2 { Value = "value" };
+
+                await new Generator().GenerateFileAsync(model, "test.txt");
+
+                File.ReadAllText("test.txt").Should().Be("Value=value");
+            }
+        }
+
+        [Test]
         public async Task GenerateFiles_NoFiles()
         {
-            var folder = SetupTestFolder();
+            using (var setup = new SetupTestFolder())
+            {
+                await new Generator().GenerateFilesAsync(new List<FileGenerator>());
 
-            await new Generator().GenerateFilesAsync(new List<FileGenerationInfo>());
-
-            Directory.GetFiles(folder).Length.Should().Be(0);
+                Directory.GetFiles(setup.TestFolder).Length.Should().Be(0);
+            }
         }
 
-        private string SetupTestFolder()
+        public class SetupTestFolder : IDisposable
         {
-            var testDir = Path.GetDirectoryName(this.GetType().Assembly.Location);
-            var testFolder = Path.Combine(testDir, "_testFiles");
-            DeleteFolder(testFolder);
-            Directory.CreateDirectory(testFolder);
-            Environment.CurrentDirectory = testFolder;
-            return testFolder;
-        }
+            private string _previousCurrentDirectory;
 
-        private static void DeleteFolder(string folder)
-        {
-            var count = 3;
+            public SetupTestFolder()
+            {
+                _previousCurrentDirectory = Environment.CurrentDirectory;
+                var testDir = Path.GetDirectoryName(this.GetType().Assembly.Location);
+                TestFolder = Path.Combine(testDir, "_testFiles");
+                DeleteFolder(TestFolder);
+                Directory.CreateDirectory(TestFolder);
+                Environment.CurrentDirectory = TestFolder;
+            }
 
-            while (Directory.Exists(folder))
-                try { Directory.Delete(folder, true); }
-                catch
-                {
-                    Thread.Sleep(0);
+            public string TestFolder { get; private set; }
 
-                    if (count-- == 0)
-                        throw;
-                }
+            public void Dispose()
+            {
+                Environment.CurrentDirectory = _previousCurrentDirectory;
+            }
+
+            private static void DeleteFolder(string folder)
+            {
+                var count = 3;
+
+                while (Directory.Exists(folder))
+                    try { Directory.Delete(folder, true); }
+                    catch
+                    {
+                        Thread.Sleep(0);
+
+                        if (count-- == 0)
+                            throw;
+                    }
+            }
         }
     }
 }
