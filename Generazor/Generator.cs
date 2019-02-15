@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Razor.Hosting;
 
 namespace Generazor
 {
     public class Generator
     {
+        private ViewAssemblyDictionary _viewAssemblies;
+
+        public Generator() : this(new ViewAssemblyDictionary()) { }
+
+        public Generator(ViewAssemblyDictionary viewAssemblies)
+        {
+            _viewAssemblies = viewAssemblies;
+        }
+
         public async Task<string> GenerateStringAsync<TModel>(TModel model)
         {
             var view = ViewFor(typeof(TModel));
@@ -39,27 +45,9 @@ namespace Generazor
 
         public async Task Generate<TModel>(string view, TModel model, TextWriter textWriter)
         {
-            var assemblyPath = typeof(TModel).Assembly.Location;
-            var viewAssemblyPath = assemblyPath.Replace(".dll", ".Views.dll");
-            var viewAssembly = Assembly.LoadFrom(viewAssemblyPath);
-
-            var itemLoader = new RazorCompiledItemLoader();
-            var items = itemLoader.LoadItems(viewAssembly);
-
-            var item = items.Where(i => i.Identifier == view).SingleOrDefault();
-
-            if (item == null)
-                throw new Exception($"Could not find view '{view}' in assembly {viewAssembly.Location}.  Valid views:\n{string.Join("\n", items.Select(i => i.Identifier))}");
-
-            var page = (GenerazorPage<TModel>)Activator.CreateInstance(item.Type);
+            var page = _viewAssemblies.NewPage(view, model, textWriter);
             (page as IActivatePage<TModel>).Activate(textWriter, model);
             await page.ExecuteAsync();
-        }
-
-        public async Task GenerateFilesAsync<TModel>(IEnumerable<FileGenerator> fileGenerators)
-        {
-            foreach (var fileGenerator in fileGenerators)
-                await fileGenerator.GenerateAsync(this);
         }
 
         public async Task GenerateFilesAsync(IEnumerable<FileGenerator> fileGenerators)
