@@ -42,7 +42,7 @@ namespace Generazor
             }
         }
 
-        public async Task GenerateFilesAsync(IList<FileGenerationInfo> fileGenerationInfos)
+        public async Task GenerateFilesAsync(IEnumerable<FileGenerationInfo> fileGenerationInfos)
         {
             await Task.Delay(0);
         }

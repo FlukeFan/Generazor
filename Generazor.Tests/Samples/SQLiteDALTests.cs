@@ -4,6 +4,7 @@ using NUnit.Framework;
 namespace Generazor.Tests.Samples
 {
     [TestFixture]
+    [Category("Slow")]
     public class SQLiteDALTests
     {
         [Test]

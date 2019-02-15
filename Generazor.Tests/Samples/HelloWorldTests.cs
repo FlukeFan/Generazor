@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace Generazor.Tests.Samples
 {
     [TestFixture]
-    // fast enough to run each time [Category("Slow")]
+    [Category("Slow")]
     public class HelloWorldTests
     {
         [Test]
