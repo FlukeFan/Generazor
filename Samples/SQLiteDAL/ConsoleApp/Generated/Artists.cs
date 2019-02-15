@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+// This file was generated using Generazor:  https://flukefan.github.io/Generazor/
+using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using Dapper;
 
 namespace ConsoleApp
 {
-    public static class ArtistsHandWritten
+    public static class Artists
     {
         public const string QueryAll = "SELECT ArtistId, Name FROM artists";
 

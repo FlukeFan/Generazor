@@ -51,6 +51,7 @@ namespace DALGenerator
                     }
 
                     filesToGenerate.Add(FileGenerator.LazyFile("/Entity.cshtml", model, Path.Combine(outputPath, $"{tableName.ToCsNameSingular()}.cs")));
+                    filesToGenerate.Add(FileGenerator.LazyFile("/Extensions.cshtml", model, Path.Combine(outputPath, $"{tableName.ToCsNamePlural()}.cs")));
                 }
             }
 

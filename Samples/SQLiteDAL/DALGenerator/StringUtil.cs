@@ -25,6 +25,16 @@
             return csName;
         }
 
+        public static string ToCsNamePlural(this string source)
+        {
+            var csName = source.ToCsName();
+
+            if (!(char.ToLower(csName[csName.Length - 1]) == 's'))
+                csName = $"{csName}s";
+
+            return csName;
+        }
+
         public static string ToCsType(this string type)
         {
             switch(type)

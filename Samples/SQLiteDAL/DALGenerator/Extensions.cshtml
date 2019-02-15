@@ -1,0 +1,21 @@
+﻿@namespace DALGenerator
+@inherits Generazor.GenerazorPage<TableModel>
+@model TableModel
+// This file was generated using Generazor:  https://flukefan.github.io/Generazor/
+using System.Collections.Generic;
+using System.Data;
+using System.Threading.Tasks;
+using Dapper;
+
+namespace @Model.Namespace
+{
+    public static class @Model.Name.ToCsNamePlural()
+    {
+        public const string QueryAll = "SELECT @(string.Join(", ", Model.ColumnNames())) FROM @Model.Name";
+
+        public static async Task@("<")IEnumerable@("<")@Model.Name.ToCsNameSingular()>> @($"QueryAll{Model.Name.ToCsName()}")(this IDbConnection cn)
+        {
+            return await cn.QueryAsync@("<")@Model.Name.ToCsNameSingular()>(QueryAll);
+        }
+    }
+}
