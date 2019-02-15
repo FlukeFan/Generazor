@@ -18,6 +18,8 @@
     <Exec Command="dotnet ../DALGenerator/bin/$(Configuration)/netcoreapp2.2\DALGenerator.dll $(MSBuildThisFileDirectory)../chinook.db $(MSBuildThisFileDirectory)Generated ConsoleApp" />
     <ItemGroup>
       <Compile Include="**/*.cs" />
+      <Compile Remove="obj/**/*.cs" />
+      <Compile Include="obj/$(Configuration)/**/*.cs" />
     </ItemGroup>
   </Target>
 
