@@ -49,9 +49,9 @@ namespace Generazor.Tests
             {
                 var model = new Example2 { Value = "value" };
 
-                await new Generator().GenerateFileAsync(model, "test.txt");
+                await new Generator().GenerateFileAsync(model, "dir/test.txt");
 
-                File.ReadAllText("test.txt").Should().Be("Value=value");
+                File.ReadAllText("dir/test.txt").Should().Be("Value=value");
             }
         }
 
@@ -73,10 +73,10 @@ namespace Generazor.Tests
             {
                 await new Generator().GenerateFilesAsync(new List<FileGenerator>
                 {
-                    FileGenerator.StreamingFile(new Example2 { Value = "123" }, "test.txt"),
+                    FileGenerator.StreamingFile(new Example2 { Value = "123" }, "dir/test.txt"),
                 });
 
-                File.ReadAllText("test.txt").Should().Be("Value=123");
+                File.ReadAllText("dir/test.txt").Should().Be("Value=123");
             }
         }
 
@@ -103,10 +103,10 @@ namespace Generazor.Tests
             {
                 await new Generator().GenerateFilesAsync(new List<FileGenerator>
                 {
-                    FileGenerator.LazyFile(new Example2 { Value = "567" }, "test.txt"),
+                    FileGenerator.LazyFile(new Example2 { Value = "567" }, "dir/test.txt"),
                 });
 
-                File.ReadAllText("test.txt").Should().Be("Value=567");
+                File.ReadAllText("dir/test.txt").Should().Be("Value=567");
             }
         }
 
@@ -115,14 +115,15 @@ namespace Generazor.Tests
         {
             using (var setup = new SetupTestFolder())
             {
-                File.WriteAllText("test.txt", "previous content");
+                Directory.CreateDirectory("dir");
+                File.WriteAllText("dir/test.txt", "previous content");
 
                 await new Generator().GenerateFilesAsync(new List<FileGenerator>
                 {
-                    FileGenerator.LazyFile(new Example2 { Value = "345" }, "test.txt"),
+                    FileGenerator.LazyFile(new Example2 { Value = "345" }, "dir/test.txt"),
                 });
 
-                File.ReadAllText("test.txt").Should().Be("Value=345");
+                File.ReadAllText("dir/test.txt").Should().Be("Value=345");
             }
         }
 

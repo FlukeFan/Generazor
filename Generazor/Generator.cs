@@ -39,6 +39,11 @@ namespace Generazor
 
         public async Task GenerateFileAsync<TModel>(string view, TModel model, string file)
         {
+            var directory = Path.GetDirectoryName(file);
+
+            if (!string.IsNullOrWhiteSpace(directory) && !Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+
             using (var fileWriter = File.CreateText(file))
                 await Generate(view, model, fileWriter);
         }

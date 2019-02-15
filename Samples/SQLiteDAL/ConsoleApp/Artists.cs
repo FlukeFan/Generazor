@@ -5,7 +5,7 @@ using Dapper;
 
 namespace ConsoleApp
 {
-    public static class Artists
+    public static class ArtistsHandWritten
     {
         public const string QueryAll = "SELECT ArtistId, Name FROM artists";
 

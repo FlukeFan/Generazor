@@ -1,0 +1,17 @@
+﻿@namespace DALGenerator
+@inherits Generazor.GenerazorPage<TableModel>
+@model TableModel
+// This file was generated using Generazor:  https://flukefan.github.io/Generazor/
+using System;
+
+namespace @Model.Namespace
+{
+    public class @Model.Name.ToCsNameSingular()
+    {
+        @foreach (var column in Model.Columns)
+        {
+<text>        public @column.Type.ToCsType() @column.Name.ToCsName() { get; set; }
+</text>
+        }
+    }
+}

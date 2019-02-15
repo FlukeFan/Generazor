@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
 using System.Threading.Tasks;
 using Generazor;
 
@@ -26,6 +27,10 @@ namespace DALGenerator
                 foreach (DataRow tableRow in tables.Rows)
                 {
                     var tableName = (string)tableRow["TABLE_NAME"];
+
+                    if (tableName == "sqlite_sequence" || tableName == "sqlite_stat1")
+                        continue;
+
                     var model = new TableModel
                     {
                         Namespace = generatedNamespace,
@@ -44,6 +49,8 @@ namespace DALGenerator
                             Type = columnType,
                         });
                     }
+
+                    filesToGenerate.Add(FileGenerator.LazyFile("/Entity.cshtml", model, Path.Combine(outputPath, $"{tableName.ToCsNameSingular()}.cs")));
                 }
             }
 
