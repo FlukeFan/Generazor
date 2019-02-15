@@ -13,9 +13,9 @@ namespace @Model.Namespace
     {
         public const string QueryAll = "SELECT @(string.Join(", ", Model.ColumnNames())) FROM @Model.Name";
 
-        public static async Task@("<")IEnumerable@("<")@Model.Name.ToCsNameSingular()>> @($"QueryAll{Model.Name.ToCsName()}")(this IDbConnection cn)
+        public static async @($"Task<IEnumerable<{Model.Name.ToCsNameSingular()}>>") @($"QueryAll{Model.Name.ToCsName()}")(this IDbConnection cn)
         {
-            return await cn.QueryAsync@("<")@Model.Name.ToCsNameSingular()>(QueryAll);
+            return await cn.QueryAsync@($"<{Model.Name.ToCsNameSingular()}>")(QueryAll);
         }
     }
 }
