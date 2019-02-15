@@ -1,7 +1,11 @@
-﻿namespace DALGenerator
+﻿using System.Collections.Generic;
+
+namespace DALGenerator
 {
     public class TableModel
     {
-        public string Name;
+        public string               Namespace;
+        public string               Name;
+        public IList<ColumnModel>   Columns     = new List<ColumnModel>();
     }
 }
