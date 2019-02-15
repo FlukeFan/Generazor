@@ -3,7 +3,7 @@
 
   <PropertyGroup>
 
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <Description>Template based code generation for .NET Core using the Razor SDK.</Description>
     <PackageTags>.NET Core Template Code Generation T4</PackageTags>
     <Authors>Richard Brown</Authors>
